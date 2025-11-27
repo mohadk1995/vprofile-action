@@ -29,6 +29,15 @@ jobs:
       - name: Setup SonarQube
         uses: warchant/setup-sonar-scanner@v7
 
+      - name: Show sonar-scanner version
+        run: sonar-scanner --version  
+
+      - name: Check Sonar server connectivity
+        run: |
+        echo "Pinging Sonar host..."
+        curl -sSf "${{ secrets.SONAR_URL }}/api/server/version" || { echo "Cannot reach Sonar server"; exit 1;}
+
+
 
       # Run sonar-scanner
       - name: SonarQube Scan
