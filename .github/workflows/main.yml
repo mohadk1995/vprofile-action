@@ -39,7 +39,7 @@ jobs:
 
       - name: SonarQube Scan (verbose)
         env:
-        SONAR_SCANNER_OPTS: "-X"
+          SONAR_SCANNER_OPTS: "-X"
         run: |
           sonar-scanner -X \
           -Dsonar.host.url="${{ secrets.SONAR_URL }}" \
